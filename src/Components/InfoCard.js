@@ -7,9 +7,9 @@ const InfoCard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get("https:rawg.io/api/games?ordering=-rating");
-      setData(result.data.results);
-      console.log(result.data.results);
+      const result = await axios.get("https://www.mocky.io/v2/5e75881a3000008388a5faba?fbclid=IwAR3N6KAnIoQomJFJOjulC5ARd3XlxUqXza1abvQ9ddnHd-N0qa-iIlmCmu0");
+      setData(result.data);
+      console.log(result.data);
     };
     fetchData();
   }, []);
@@ -19,8 +19,8 @@ const InfoCard = () => {
           <Card.Group>
       {data.map(card => (
         <Card >
-          <Card.Header>{card.name}</Card.Header>
-      <Card.Description>{card.released}</Card.Description>
+          <Card.Header>{card.text}</Card.Header>
+      <Card.Description>{card.created_at}</Card.Description>
         </Card>
       ))}
       
