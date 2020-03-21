@@ -1,26 +1,34 @@
-import React,{useState} from 'react';
-import axios from 'axios';
-import {Button} from 'semantic-ui-react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Card } from "semantic-ui-react";
 
-const InfoCard = ()=>{
+const InfoCard = () => {
+  const [data, setData] = useState([]);
 
-    const[cards,setCard]= useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("https:rawg.io/api/games?ordering=-rating");
+      setData(result.data.results);
+      console.log(result.data.results);
+    };
+    fetchData();
+  }, []);
 
-    async function callInfo(){
-
-        const cards = await axios.get('https:rawg.io/api/games?ordering=-rating');
-
-        console.log(cards.data.results);
-
-        setCard(cards);
-    }
-
-    return(
-
-        <div>
-            <Button onClick={callInfo}>API</Button>
-        </div>
-    );
+  return (
+      
+          <Card.Group>
+      {data.map(card => (
+        <Card >
+          <Card.Header>{card.name}</Card.Header>
+      <Card.Description>{card.released}</Card.Description>
+        </Card>
+      ))}
+      
+    </Card.Group>
+    
+    
+  );
 };
 
 export default InfoCard;
+
