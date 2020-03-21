@@ -1,12 +1,13 @@
 import React from 'react';
-import {Card} from 'semantic-ui-react';
+
 import './App.css';
+import InfoCard from './Components/InfoCard';
 
 function App() {
   return (
-    <Card>
+    <InfoCard>
 
-    </Card>
+    </InfoCard>
   );
 }
 
