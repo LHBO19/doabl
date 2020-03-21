@@ -16,9 +16,9 @@ const InfoCard = () => {
 
   return (
       
-          <Card.Group>
+          <Card.Group fluid>
       {data.map(card => (
-        <Card >
+        <Card fluid >
           <Card.Header>{card.text}</Card.Header>
       <Card.Description>{card.created_at}</Card.Description>
         </Card>
